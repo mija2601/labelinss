@@ -1,68 +1,23 @@
-<?php
-$page = isset($_GET['page']) ? $_GET['page'] : "home";
-
-/* -------------------------
-   DATA DOSEN / MAHASISWA / MATKUL
-------------------------- */
-$dosen_list = [
-  ['nama' => 'Prof. Dr. Ir. Bidayatul Armynah, M.T', 'jab' => 'Pengampu'],
-  ['nama' => 'Prof. Dr. Arifin, M.T', 'jab' => 'Pembimbing'],
-  ['nama' => 'Prof. Dr. Bualkar Abdullah, M.Eng.Sc.', 'jab' => 'Pengampu'],
-  ['nama' => 'Ida Laila, S.Si., M.Si', 'jab' => 'Pengampu']
-];
-
-$mahasiswa_2023 = [
-  ['nim'=>'H021231043','nama'=>'ANSAR MUBAROQ'],
-  ['nim'=>'H021231007','nama'=>'DANDI HARTONO'],
-  ['nim'=>'H021231063','nama'=>'FEBRINESYA ALFHA TANDI LION'],
-  ['nim'=>'H021231052','nama'=>'JULIYATI PUSPITA SARI'],
-  ['nim'=>'H021231004','nama'=>'MISWANJA BATU PADANG'],
-  ['nim'=>'H021231041','nama'=>'NUR ALIK KATU'],
-  ['nim'=>'H021231067','nama'=>'NUR AMALIA'],
-  ['nim'=>'H021231005','nama'=>'RUTH LEBANG'],
-  ['nim'=>'H021231022','nama'=>'SHEIRA ABIDEVA. H'],
-  ['nim'=>'H021231053','nama'=>'SRI WAHYUNI. SM'],
-  ['nim'=>'H021231055','nama'=>'TASKIYATUNNAPS'],
-  ['nim'=>'H021231037','nama'=>'ULVA ASRIANI NUR'],
-  ['nim'=>'H021231042','nama'=>'YEMIMA MELANIE SURYA']
-];
-
-$matakuliah = [
-  'INSTRUMENTASI MEDIK',
-  'MIKROKONTROLER',
-  'MIKROPROSESSOR',
-  'SISTEM SENSOR',
-  'PRAKTIKUM MIKROKONTROLER',
-  'PRAKTIKUM MIKROPROSESSOR',
-  'PRAKTIKUM SISTEM SENSOR'
-];
-?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Prodi Fisika - Lab Elektronika</title>
+<title>Lab Elektronika & Instrumentasi - Semester 5</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
-    body { font-family: Arial, sans-serif; margin:0; background:#f5faff; color:#073e5b; }
-    header { background:linear-gradient(135deg,#bfe4ff,#7dc4ff); padding:20px; box-shadow:0 4px 15px rgba(0,0,0,0.1);}
+    body { font-family: Arial; margin:0; background:#f5faff; color:#073e5b; }
+    header { background:linear-gradient(135deg,#bfe4ff,#7dc4ff); padding:20px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
     header h1 { margin:0; }
-    nav { margin-top:10px; }
-    nav a { margin-right:20px; text-decoration:none; color:#073e5b; font-weight:bold; padding:6px 12px; border-radius:5px; }
+    nav a { margin-right:20px; font-weight:bold; text-decoration:none; color:#073e5b; padding:6px 12px; border-radius:5px; }
     nav a:hover { background:white; }
-
-    .container { width:90%; margin:30px auto; }
-    .card { background:white; padding:20px; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,0.06); margin-bottom:20px; }
-    table { width:100%; border-collapse:collapse; margin-top:15px;}
-    th, td { padding:12px; border:1px solid #d8edff;}
-    th { background:#cfeaff; }
-
-    input[type=text] { padding:10px; width:70%; border-radius:8px; border:1px solid #a8d8ff; }
-    button { padding:10px 14px; background:#49a9ff; color:white; border:none; border-radius:8px; cursor:pointer; }
-    button:hover { background:#1f8be6; }
-
-    footer { background:#bfe4ff; padding:15px; text-align:center; margin-top:40px; }
+    .container { width:90%; margin:auto; margin-top:20px; }
+    .card { background:white; padding:20px; border-radius:10px; box-shadow:0 5px 20px rgba(0,0,0,0.1); margin-bottom:20px; }
+    table { width:100%; border-collapse:collapse; margin-top:15px; }
+    th,td { padding:12px; border:1px solid #cfeaff; }
+    th { background:#d7eeff; }
+    input { width:70%; padding:10px; border-radius:8px; border:1px solid #82caff; }
+    footer { background:#bfe4ff; padding:15px; text-align:center; margin-top:50px; }
 </style>
 </head>
 
@@ -73,117 +28,114 @@ $matakuliah = [
     <p>Laboratorium Elektronika & Instrumentasi - Semester 5</p>
 
     <nav>
-        <a href="index.php?page=home">Home</a>
-        <a href="index.php?page=lab">Laboratorium</a>
-        <a href="index.php?page=dosen">Dosen</a>
-        <a href="index.php?page=mahasiswa">Mahasiswa</a>
-        <a href="index.php?page=matkul">Mata Kuliah</a>
-        <a href="index.php?page=kontak">Kontak</a>
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('lab')">Laboratorium</a>
+        <a href="#" onclick="showPage('dosen')">Dosen</a>
+        <a href="#" onclick="showPage('mahasiswa')">Mahasiswa</a>
+        <a href="#" onclick="showPage('matkul')">Mata Kuliah</a>
+        <a href="#" onclick="showPage('kontak')">Kontak</a>
     </nav>
 </header>
 
 <div class="container">
 
-<?php
-/* -------------------------
-   HOME
-------------------------- */
-if ($page == "home") {
-    echo "
-    <div class='card'>
-        <h2>Selamat Datang di Website Prodi Fisika</h2>
-        <p>Website ini dibuat untuk menjelaskan bagaimana mahasiswa semester 5 yang mengambil peminatan Elektronika & Instrumentasi</p>
-    </div>
-    ";
-}
+<!-- ================= HOME ================= -->
+<div id="home" class="page card">
+    <h2>Selamat Datang di Website Prodi Fisika</h2>
+    <p>Website ini dibuat untuk menjelaskan kegiatan mahasiswa semester 5 yang mengambil peminatan Elektronika & Instrumentasi.</p>
+</div>
 
-/* -------------------------
-   LABORATORIUM
-------------------------- */
-elseif ($page == "lab") {
-    echo "
-    <div class='card'>
-        <h2>Mahasiswa semester 5 Laboratorium Elektronika & Instrumentasi</h2>
-        <p>Pada semester 5, mahasiswa peminatan Elektronika dan Instrumentasi (ELINS) mulai memasuki tahap praktik yang lebih terarah dan teknis. Fokus pembelajaran berada pada penguasaan mikrokontroler, sistem sensor, mikroprosesor, serta aplikasi instrumentasi dalam berbagai pengukuran fisis. Mahasiswa tidak hanya mempelajari teori, tetapi aktif melakukan eksperimen, merakit rangkaian, menganalisis sinyal, serta membuat proyek terapan</p>
-    </div>";
-}
+<!-- ================= LAB ================= -->
+<div id="lab" class="page card" style="display:none;">
+    <h2>Aktivitas Mahasiswa Semester 5</h2>
+    <p>Pada semester 5, mahasiswa ELINS mempelajari mikrokontroler, sistem sensor, mikroprosesor, dan instrumentasi modern. 
+    Mereka melakukan eksperimen, merakit rangkaian, membaca data sensor, memrogram perangkat, serta membuat proyek mini seperti alat ukur sederhana.</p>
+</div>
 
-/* -------------------------
-   DOSEN
-------------------------- */
-elseif ($page == "dosen") {
-    echo "<div class='card'><h2>Daftar Dosen</h2>";
-    echo "<table><tr><th>Nama</th><th>Keterangan</th></tr>";
-    foreach ($dosen_list as $d) {
-        echo "<tr><td>{$d['nama']}</td><td>{$d['jab']}</td></tr>";
-    }
-    echo "</table></div>";
-}
+<!-- ================= DOSEN ================= -->
+<div id="dosen" class="page card" style="display:none;">
+    <h2>Daftar Dosen</h2>
+<table>
+    <tr><th>Nama</th><th>Keterangan</th></tr>
+    <tr><td>Prof. Dr. Ir. Bidayatul Armynah, M.T</td><td>Pengampu</td></tr>
+    <tr><td>Prof. Dr. Arifin, M.T</td><td>Pembimbing</td></tr>
+    <tr><td>Prof. Dr. Bualkar Abdullah, M.Eng.Sc.</td><td>Pengampu</td></tr>
+    <tr><td>Ida Laila, S.Si., M.Si</td><td>Pengampu</td></tr>
+</table>
+</div>
 
-/* -------------------------
-   MAHASISWA + FORM SEARCH
-------------------------- */
-elseif ($page == "mahasiswa") {
+<!-- ================= MAHASISWA ================= -->
+<div id="mahasiswa" class="page card" style="display:none;">
+    <h2>Mahasiswa Semester 5 - Angkatan 2023</h2>
 
-    // Ambil kata kunci pencarian
-    $keyword = isset($_POST['keyword']) ? strtolower($_POST['keyword']) : "";
+    <input type="text" id="search" placeholder="Cari nama atau NIM..." onkeyup="filterTable()">
 
-    echo "<div class='card'>";
-    echo "<h2>Mahasiswa Semester 5 - Angkatan 2023</h2>";
+<table id="mhsTable">
+<tr><th>NIM</th><th>Nama</th></tr>
 
-    echo "
-    <form method='POST'>
-        <input type='text' name='keyword' placeholder='Cari NIM atau Nama...' value='$keyword'>
-        <button type='submit'>Cari</button>
-    </form>
-    ";
+<tr><td>H021231043</td><td>ANSAR MUBAROQ</td></tr>
+<tr><td>H021231007</td><td>DANDI HARTONO</td></tr>
+<tr><td>H021231063</td><td>FEBRINESYA ALFHA TANDI LION</td></tr>
+<tr><td>H021231052</td><td>JULIYATI PUSPITA SARI</td></tr>
+<tr><td>H021231004</td><td>MISWANJA BATU PADANG</td></tr>
+<tr><td>H021231041</td><td>NUR ALIK KATU</td></tr>
+<tr><td>H021231067</td><td>NUR AMALIA</td></tr>
+<tr><td>H021231005</td><td>RUTH LEBANG</td></tr>
+<tr><td>H021231022</td><td>SHEIRA ABIDEVA H.</td></tr>
+<tr><td>H021231053</td><td>SRI WAHYUNI SM</td></tr>
+<tr><td>H021231055</td><td>TASKIYATUNNAPS</td></tr>
+<tr><td>H021231037</td><td>ULVA ASRIANI NUR</td></tr>
+<tr><td>H021231042</td><td>YEMIMA MELANIE SURYA</td></tr>
 
-    echo "<table><tr><th>NIM</th><th>Nama</th></tr>";
+</table>
+</div>
 
-    foreach ($mahasiswa_2023 as $m) {
-        $nim = strtolower($m['nim']);
-        $nama = strtolower($m['nama']);
+<!-- ================= MATKUL ================= -->
+<div id="matkul" class="page card" style="display:none;">
+    <h2>Mata Kuliah Semester 5</h2>
+<ul>
+    <li>INSTRUMENTASI MEDIK</li>
+    <li>MIKROKONTROLER</li>
+    <li>MIKROPROSESOR</li>
+    <li>SISTEM SENSOR</li>
+    <li>PRAKTIKUM MIKROKONTROLER</li>
+    <li>PRAKTIKUM MIKROPROSESSOR</li>
+    <li>PRAKTIKUM SISTEM SENSOR</li>
+</ul>
+</div>
 
-        // Jika ada pencarian, filter hasil
-        if ($keyword == "" || strpos($nim, $keyword) !== false || strpos($nama, $keyword) !== false) {
-            echo "<tr><td>{$m['nim']}</td><td>{$m['nama']}</td></tr>";
-        }
-    }
-
-    echo "</table></div>";
-}
-
-/* -------------------------
-   MATA KULIAH
-------------------------- */
-elseif ($page == "matkul") {
-    echo "<div class='card'><h2>Mata Kuliah Semester 5</h2>";
-    echo "<ul>";
-    foreach ($matakuliah as $mk) {
-        echo "<li>$mk</li>";
-    }
-    echo "</ul></div>";
-}
-
-/* -------------------------
-   KONTAK
-------------------------- */
-elseif ($page == "kontak") {
-    echo "
-    <div class='card'>
-        <h2>Kontak</h2>
-        <p>Email Prodi: <b>fisika@fmipa.unhas.ac.id</b></p>
-        <p>Instagram: <b>@fisika_Unhas</b></p>
-    </div>
-    ";
-}
-?>
+<!-- ================= KONTAK ================= -->
+<div id="kontak" class="page card" style="display:none;">
+    <h2>Kontak</h2>
+    <p>Email Prodi: <b>fisika@fmipa.unhas.ac.id</b></p>
+    <p>Instagram: <b>@fisika_unhas</b></p>
+</div>
 
 </div>
 
 <footer>
-    © <?= date('Y') ?> Program Studi Fisika – Lab Elektronika & Instrumentasi
+    © 2025 Program Studi Fisika – Lab Elektronika & Instrumentasi
 </footer>
+
+<script>
+function showPage(pageName) {
+    let pages = document.getElementsByClassName("page");
+    for (let i = 0; i < pages.length; i++) {
+        pages[i].style.display = "none";
+    }
+    document.getElementById(pageName).style.display = "block";
+}
+
+function filterTable() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let rows = document.querySelectorAll("#mhsTable tr");
+
+    for (let i = 1; i < rows.length; i++) {
+        let rowText = rows[i].textContent.toLowerCase();
+        rows[i].style.display = rowText.includes(input) ? "" : "none";
+    }
+}
+</script>
 
 </body>
 </html>

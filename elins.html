@@ -5,10 +5,10 @@ $page = isset($_GET['page']) ? $_GET['page'] : "home";
    DATA DOSEN / MAHASISWA / MATKUL
 ------------------------- */
 $dosen_list = [
-  ['nama' => 'Prof. Dr. Ir. Bidayatul Armynah, M.T', 'jab' => 'Pembimbing'],
-  ['nama' => 'Prof. Dr. Arifin, M.T', 'jab' => 'Pengampu'],
-  ['nama' => 'Prof. Dr. Bualkar Abdullah, M.Eng.Sc.', 'jab' => 'Instrumen'],
-  ['nama' => 'Ida Laila, S.Si., M.Si', 'jab' => 'Praktikum']
+  ['nama' => 'Prof. Dr. Ir. Bidayatul Armynah, M.T', 'jab' => 'Pengampu'],
+  ['nama' => 'Prof. Dr. Arifin, M.T', 'jab' => 'Pembimbing'],
+  ['nama' => 'Prof. Dr. Bualkar Abdullah, M.Eng.Sc.', 'jab' => 'Pengampu'],
+  ['nama' => 'Ida Laila, S.Si., M.Si', 'jab' => 'Pengampu']
 ];
 
 $mahasiswa_2023 = [
@@ -92,7 +92,7 @@ if ($page == "home") {
     echo "
     <div class='card'>
         <h2>Selamat Datang di Website Prodi Fisika</h2>
-        <p>Website ini dibuat untuk membantu mahasiswa semester 5 yang mengambil peminatan Elektronika & Instrumentasi.</p>
+        <p>Website ini dibuat untuk menjelaskan bagaimana mahasiswa semester 5 yang mengambil peminatan Elektronika & Instrumentasi</p>
     </div>
     ";
 }
@@ -103,8 +103,8 @@ if ($page == "home") {
 elseif ($page == "lab") {
     echo "
     <div class='card'>
-        <h2>Laboratorium Elektronika & Instrumentasi</h2>
-        <p>Laboratorium ini digunakan untuk menunjang pembelajaran praktik seperti sistem sensor, mikrokontroler, dan instrumentasi.</p>
+        <h2>Mahasiswa semester 5 Laboratorium Elektronika & Instrumentasi</h2>
+        <p>Pada semester 5, mahasiswa peminatan Elektronika dan Instrumentasi (ELINS) mulai memasuki tahap praktik yang lebih terarah dan teknis. Fokus pembelajaran berada pada penguasaan mikrokontroler, sistem sensor, mikroprosesor, serta aplikasi instrumentasi dalam berbagai pengukuran fisis. Mahasiswa tidak hanya mempelajari teori, tetapi aktif melakukan eksperimen, merakit rangkaian, menganalisis sinyal, serta membuat proyek terapan</p>
     </div>";
 }
 
@@ -173,7 +173,7 @@ elseif ($page == "kontak") {
     <div class='card'>
         <h2>Kontak</h2>
         <p>Email Prodi: <b>fisika@fmipa.unhas.ac.id</b></p>
-        <p>Instagram: <b>@fisika_unhas</b></p>
+        <p>Instagram: <b>@fisika_Unhas</b></p>
     </div>
     ";
 }
